@@ -1,2 +1,4 @@
 30
 2 3 1 4
+
+same weight to length ratio of all sticks and sticks chosen by low length first
