@@ -2,8 +2,13 @@ import sys
 
 def read_input_file(filename):
     try:
-        with open(sys.argv[1], "r") as file:
-            print()
+         with open(filename, "r") as file:
+            # Reading the input data and parsing
+            n = int(file.readline().strip())  # Total no of sticks
+            L = int(file.readline().strip())  # Length of the tube
+            length_sticks = list(map(int, file.readline().strip().split()))  # Lengths of sticks
+            weights_sticks = list(map(int, file.readline().strip().split()))  # Weights of sticks
+        return n, L, length_sticks, weights_sticks
     except Exception as e:
         print(f"Error reading file {filename}: {e}")
         exit(1)
