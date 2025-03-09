@@ -1,4 +1,0 @@
-30
-5 4 2
-
-same w:l ratio and sticks chosen by greater length first

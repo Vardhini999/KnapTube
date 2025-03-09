@@ -2,7 +2,7 @@ import sys
 
 def read_input_file(filename):
     try:
-         with open(filename, "r") as file:
+        with open(filename, "r") as file:
             # Reading the input data and parsing
             n = int(file.readline().strip())  # Total no of sticks
             L = int(file.readline().strip())  # Length of the tube
@@ -14,17 +14,17 @@ def read_input_file(filename):
         exit(1)
 
 #function which will calculate the maximum weight of the sticks that can be put in the tube
-def sticks_and_weights(n, L, l_n, w_n):
+def get_maximum_weight(n, L, l_n, w_n):
     weight = 0
     sticks = []
     ratio_dict = {}
-    #Heuristic: Sort the sticks by their weight to length ratio and storing it in a dictionary where key is the index of the stick
+    #Heuristic: Sort in descending order of the sticks by their weight to length ratio and storing it in a dictionary where key is the index of the stick
     for i in range(n):
         ratio_dict[i] = w_n[i] / l_n[i]
-    #Sorting the dictionary by the ratio of weight to length
+    #Sorting the dictionary by the ratio of weight to length( sorting takes  n log n time)
     sorted_dict = sorted(ratio_dict.items(), key=lambda item: item[1], reverse=True)
 
-    #iterating through each stick in the dictionary
+    #iterating through each stick in the dictionary ( n time)
     for key, _ in sorted_dict:
         currentLength = l_n[key]
         if L == 0:
@@ -53,6 +53,5 @@ if __name__ == "__main__":
         input = sys.argv[1]
 
     no_of_sticks, tube_length, lengths_of_sticks, weights_of_sticks = read_input_file(input)
-    sticks, weight = sticks_and_weights(no_of_sticks, tube_length, lengths_of_sticks, weights_of_sticks)
-    print(sticks, weight)
+    weight, sticks = get_maximum_weight(no_of_sticks, tube_length, lengths_of_sticks, weights_of_sticks)
     write_output_file(input, weight, sticks)

@@ -1,4 +1,2 @@
-6
+6.0
 1
-
-length fulfilled by first stick alone
